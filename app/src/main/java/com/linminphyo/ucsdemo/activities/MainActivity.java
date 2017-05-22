@@ -5,13 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
-import com.linminphyo.ucsdemo.callback.OnPhotoItemClickListener;
-import com.linminphyo.ucsdemo.model.PhotoPOJO;
 import com.linminphyo.ucsdemo.PhotosAdapter;
 import com.linminphyo.ucsdemo.R;
 import com.linminphyo.ucsdemo.api.UnsplashAPI;
+import com.linminphyo.ucsdemo.callback.OnPhotoItemClickListener;
+import com.linminphyo.ucsdemo.model.PhotoPOJO;
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -38,8 +37,7 @@ public class MainActivity extends AppCompatActivity implements OnPhotoItemClickL
     unsplashAPI.getPhotos().enqueue(new Callback<List<PhotoPOJO>>() {
       @Override public void onResponse(Call<List<PhotoPOJO>> call, Response<List<PhotoPOJO>> response) {
         photos.addAll(response.body());
-        Log.i("Response" , response.message());
-        rvPhotos.setAdapter(photosAdapter);
+        photosAdapter.notifyDataSetChanged();
       }
 
       @Override public void onFailure(Call<List<PhotoPOJO>> call, Throwable t) {
