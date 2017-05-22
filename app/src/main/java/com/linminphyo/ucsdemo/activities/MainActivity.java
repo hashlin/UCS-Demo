@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.linminphyo.ucsdemo.PhotosAdapter;
 import com.linminphyo.ucsdemo.R;
@@ -20,7 +22,9 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements OnPhotoItemClickListener {
 
   RecyclerView rvPhotos;
-  List<PhotoPOJO>photos = new ArrayList<>();
+  ProgressBar progressBar;
+
+  List<PhotoPOJO> photos = new ArrayList<>();
   PhotosAdapter photosAdapter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -28,28 +32,36 @@ public class MainActivity extends AppCompatActivity implements OnPhotoItemClickL
     setContentView(R.layout.activity_main);
 
     rvPhotos = (RecyclerView) findViewById(R.id.rv_photos);
-    photosAdapter = new PhotosAdapter(photos , this);
+    progressBar = (ProgressBar) findViewById(R.id.progressbar);
+
+    photosAdapter = new PhotosAdapter(photos, this);
     rvPhotos.setAdapter(photosAdapter);
     rvPhotos.setLayoutManager(new LinearLayoutManager(this));
 
-    UnsplashAPI unsplashAPI = new UnsplashAPI();
+    fetchFromAPI();
 
+  }
+
+  private void fetchFromAPI() {
+    UnsplashAPI unsplashAPI = new UnsplashAPI();
     unsplashAPI.getPhotos().enqueue(new Callback<List<PhotoPOJO>>() {
-      @Override public void onResponse(Call<List<PhotoPOJO>> call, Response<List<PhotoPOJO>> response) {
+      @Override
+      public void onResponse(Call<List<PhotoPOJO>> call, Response<List<PhotoPOJO>> response) {
         photos.addAll(response.body());
         photosAdapter.notifyDataSetChanged();
+        progressBar.setVisibility(View.GONE);
       }
 
       @Override public void onFailure(Call<List<PhotoPOJO>> call, Throwable t) {
-        Toast.makeText(getApplicationContext() , t.getMessage() , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+        progressBar.setVisibility(View.GONE);
       }
     });
-
   }
 
   @Override public void onPhotoItemClicked(PhotoPOJO photo) {
     Intent intent = new Intent(this, PhotoDetailsActivity.class);
-    intent.putExtra("photoPOJO" , photo);
+    intent.putExtra("photoPOJO", photo);
     startActivity(intent);
   }
 }
