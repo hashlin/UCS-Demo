@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 
 public class User implements Serializable {
-  @SerializedName("tvName")
+  @SerializedName("name")
   String name ;
 
   public String getName() {

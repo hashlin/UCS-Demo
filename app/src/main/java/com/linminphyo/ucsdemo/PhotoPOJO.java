@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by lin on 5/21/17.
  */
 
-public class PhotoPOJO implements Serializable{
+public class PhotoPOJO implements Serializable {
   @SerializedName("user") private User user;
 
   @SerializedName("urls") private URL url;
