@@ -1,13 +1,15 @@
-package com.linminphyo.ucsdemo;
+package com.linminphyo.ucsdemo.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.linminphyo.ucsdemo.model.PhotoPOJO;
+import com.linminphyo.ucsdemo.R;
 import com.squareup.picasso.Picasso;
 
-public class PhotoDetails extends AppCompatActivity {
+public class PhotoDetailsActivity extends AppCompatActivity {
 
   TextView tvName;
   ImageView tvPhoto;

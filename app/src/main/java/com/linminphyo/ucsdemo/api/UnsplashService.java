@@ -1,5 +1,6 @@
-package com.linminphyo.ucsdemo;
+package com.linminphyo.ucsdemo.api;
 
+import com.linminphyo.ucsdemo.model.PhotoPOJO;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,5 +1,6 @@
-package com.linminphyo.ucsdemo;
+package com.linminphyo.ucsdemo.api;
 
+import com.linminphyo.ucsdemo.model.PhotoPOJO;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -9,11 +10,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by lin on 5/21/17.
  */
 
-public class RestAPI {
+public class UnsplashAPI {
 
   UnsplashService service;
 
-  public RestAPI() {
+  public UnsplashAPI() {
 
     Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.unsplash.com/")
         .addConverterFactory(GsonConverterFactory.create())

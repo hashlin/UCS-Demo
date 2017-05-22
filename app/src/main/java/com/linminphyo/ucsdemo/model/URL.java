@@ -1,4 +1,4 @@
-package com.linminphyo.ucsdemo;
+package com.linminphyo.ucsdemo.model;
 
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package com.linminphyo.ucsdemo;
+package com.linminphyo.ucsdemo.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,13 +7,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
+import com.linminphyo.ucsdemo.callback.OnPhotoItemClickListener;
+import com.linminphyo.ucsdemo.model.PhotoPOJO;
+import com.linminphyo.ucsdemo.PhotosAdapter;
+import com.linminphyo.ucsdemo.R;
+import com.linminphyo.ucsdemo.api.UnsplashAPI;
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements OnPhotoItemClickListener{
+public class MainActivity extends AppCompatActivity implements OnPhotoItemClickListener {
 
   RecyclerView rvPhotos;
   List<PhotoPOJO>photos = new ArrayList<>();
@@ -28,9 +33,9 @@ public class MainActivity extends AppCompatActivity implements OnPhotoItemClickL
     rvPhotos.setAdapter(photosAdapter);
     rvPhotos.setLayoutManager(new LinearLayoutManager(this));
 
-    RestAPI restAPI = new RestAPI();
+    UnsplashAPI unsplashAPI = new UnsplashAPI();
 
-    restAPI.getPhotos().enqueue(new Callback<List<PhotoPOJO>>() {
+    unsplashAPI.getPhotos().enqueue(new Callback<List<PhotoPOJO>>() {
       @Override public void onResponse(Call<List<PhotoPOJO>> call, Response<List<PhotoPOJO>> response) {
         photos.addAll(response.body());
         Log.i("Response" , response.message());
@@ -45,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements OnPhotoItemClickL
   }
 
   @Override public void onPhotoItemClicked(PhotoPOJO photo) {
-    Intent intent = new Intent(this, PhotoDetails.class);
+    Intent intent = new Intent(this, PhotoDetailsActivity.class);
     intent.putExtra("photoPOJO" , photo);
     startActivity(intent);
   }
