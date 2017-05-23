@@ -8,7 +8,7 @@
     tools:context="com.linminphyo.ucsdemo.activities.PhotoDetailsActivity"
     >
   <ImageView
-      android:id="@+id/tv_photo"
+      android:id="@+id/iv_photo"
       android:layout_centerInParent="true"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

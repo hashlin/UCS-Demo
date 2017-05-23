@@ -6,7 +6,7 @@
     >
   <ImageView
       android:scaleType="centerCrop"
-      android:id="@+id/tv_photo"
+      android:id="@+id/iv_photo"
       android:layout_width="match_parent"
       android:layout_height="180dp"
       />

@@ -1,5 +1,6 @@
 package com.linminphyo.ucsdemo.api;
 
+import com.linminphyo.ucsdemo.Constants;
 import com.linminphyo.ucsdemo.model.PhotoPOJO;
 import java.util.List;
 import retrofit2.Call;
@@ -24,6 +25,6 @@ public class UnsplashAPI {
   }
 
   public Call<List<PhotoPOJO>> getPhotos() {
-    return service.listPhotos("Client-ID 10619883ac2617f21187d7008143bf0612cfcbb7ca6edacd4545371100e04012");
+    return service.listPhotos(Constants.getAuthToken());
   }
 }

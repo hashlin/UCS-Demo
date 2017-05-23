@@ -47,8 +47,10 @@ public class MainActivity extends AppCompatActivity implements OnPhotoItemClickL
     unsplashAPI.getPhotos().enqueue(new Callback<List<PhotoPOJO>>() {
       @Override
       public void onResponse(Call<List<PhotoPOJO>> call, Response<List<PhotoPOJO>> response) {
-        photos.addAll(response.body());
-        photosAdapter.notifyDataSetChanged();
+        if (response.body() !=null) {
+          photos.addAll(response.body());
+          photosAdapter.notifyDataSetChanged();
+        }
         progressBar.setVisibility(View.GONE);
       }
 

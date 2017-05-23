@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
  * Created by lin on 5/21/17.
  */
 
-class PhotosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class PhotosViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
   TextView tvName;
   ImageView ivPhoto;
   PhotoPOJO photoPOJO;
@@ -25,7 +25,7 @@ class PhotosViewHolder extends RecyclerView.ViewHolder implements View.OnClickLi
     super(view);
     this.view = view ;
     tvName = (TextView) view.findViewById(R.id.tv_name);
-    ivPhoto = (ImageView) view.findViewById(R.id.tv_photo);
+    ivPhoto = (ImageView) view.findViewById(R.id.iv_photo);
 
     itemClickListener = (OnPhotoItemClickListener) context;
     view.setOnClickListener(this);

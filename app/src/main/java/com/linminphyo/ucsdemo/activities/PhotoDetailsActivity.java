@@ -23,7 +23,7 @@ public class PhotoDetailsActivity extends AppCompatActivity {
     }
 
     tvName = (TextView) findViewById(R.id.tv_name);
-    ivPhoto = (ImageView) findViewById(R.id.tv_photo);
+    ivPhoto = (ImageView) findViewById(R.id.iv_photo);
 
     if (getIntent().getExtras().get("photoPOJO")!=null) {
       PhotoPOJO photo = (PhotoPOJO) getIntent().getExtras().get("photoPOJO");
