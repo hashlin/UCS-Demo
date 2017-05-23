@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 public class PhotoDetailsActivity extends AppCompatActivity {
 
   TextView tvName;
-  ImageView tvPhoto;
+  ImageView ivPhoto;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -23,12 +23,12 @@ public class PhotoDetailsActivity extends AppCompatActivity {
     }
 
     tvName = (TextView) findViewById(R.id.tv_name);
-    tvPhoto = (ImageView) findViewById(R.id.tv_photo);
+    ivPhoto = (ImageView) findViewById(R.id.tv_photo);
 
     if (getIntent().getExtras().get("photoPOJO")!=null) {
       PhotoPOJO photo = (PhotoPOJO) getIntent().getExtras().get("photoPOJO");
       tvName.setText(photo.getUser().getName());
-      Picasso.with(this).load(photo.getUrl().getRegular()).into(tvPhoto);
+      Picasso.with(this).load(photo.getUrl().getRegular()).into(ivPhoto);
     }
   }
 
